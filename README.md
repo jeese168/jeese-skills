@@ -1,79 +1,114 @@
 # jeese-skills
 
-这是个人 Agent Skills 仓库。仓库只维护可直接编辑的 Skill 源码，不预先创建空 Plugin、发布包或多套平台副本。
+`jeese-skills` 是一个长期维护的个人 Agent 适配仓库。它把我在理解、组织、解释和表达信息时真正需要的习惯，沉淀为可检查、可修改、可跨模型和跨设备使用的 Agent Skills。
 
-当前包含：
+这个项目不是提示词收藏夹，也不准备重新发明所有工作方法。成熟的通用能力可以直接站在巨人的肩膀上；本仓库只保存通用模型和现有工具没有稳定覆盖、而我在真实协作中反复需要的个人适配。
 
-- [`jeese-writing`](skills/jeese-writing/)：按 Jeese 的思考与表达习惯撰写、重构和修订中文技术文章与学习笔记。
+## 为什么需要个人 Skills
 
-## 仓库结构
+通用模型需要面对大量不同用户，因此通常追求稳定、均衡、客观、完整和可执行。这样的 Agent 很通用，也容易形成趋同的表达方式：先套结构再填内容，把连续思想拆成大量标题和列表，反复总结已经说清的结论，或者为了显得完整而加入当前并不需要的信息。
+
+模型可能掌握了答案，却没有按照我能够自然理解和继续思考的方式讲出来。如果每次都要重新纠正这些默认习惯，真正的理解和表达工作仍然会回到我身上。
+
+`jeese-skills` 要把这部分个人适配从具体模型中抽离。模型可以更新，使用的平台也可以变化，但已经验证过的协作方式由我自己保存和维护。
+
+这些 Skills 不只处理语气和用词，还会逐步说明：什么信息应该先出现，一个概念第一次要讲到什么程度，因果、机制、例子和边界怎样组织，怎样说清主体、对象、动作和影响，以及什么时候应该保留明确判断。
+
+## 仓库保存什么
+
+仓库保存已经从真实任务中提炼出来、会改变 Agent 决策的内容，包括：
+
+- 一个具体任务应该怎样完成；
+- 某种题材需要的局部规则；
+- 跨任务反复出现的稳定个人习惯；
+- 必要的正反例、参考资料和确定性脚本。
+
+原始聊天、私人经历、未经筛选的个人资料和只对一次任务有效的要求，不会因为“以后可能有用”就进入仓库。真实反馈需要先被提炼成可复用的判断。
+
+## Skills 怎样组织
+
+平台首先根据 Skill 的 `name` 和 `description` 判断是否激活它。Skill 激活以后，Agent 再读取 `SKILL.md`，并按照其中的说明按需加载内部 references。这就是渐进式披露。
+
+```text
+用户任务
+   ↓
+平台选择一个 Skill
+   ↓
+读取 SKILL.md
+   ↓
+Agent 根据任务选择内部 references
+```
+
+reference 不是另一个 Skill，而是同一个 Skill 的内部资料。组织时遵循以下边界：
+
+| 情况 | 组织方式 |
+| --- | --- |
+| 主要任务、工作过程和验收标准相同，只有局部差异 | 一个 Skill，通过 references 区分 |
+| 用户触发方式、主要产物、工作过程或验收标准明显不同 | 拆成独立 Skills |
+| 一个任务必须经过固定的多个阶段 | 在真实需要出现后创建工作流 Skill |
+
+因此，不会为了题材名称不同就立即拆分，也不会建立一个只负责给所有 Skills 分类的总路由。边界由真实任务中的冲突决定。
+
+## Skills 怎样演化
+
+现有文章和历史修改只能提供第一批材料，不能一次性定义全部习惯。Skills 会通过真实使用持续校准：
+
+```text
+完成真实任务
+    ↓
+观察不符合需要的结果
+    ↓
+判断问题属于哪个层级
+    ↓
+修改最小范围的规则或例子
+    ↓
+继续用真实任务验证
+```
+
+一次反馈不会自动成为永久规则。当前任务要求留在上下文，题材差异进入对应 reference，跨任务反复出现的习惯才进入稳定规则，可以机械判断的问题才考虑交给脚本。
+
+## 唯一真源与可迁移性
+
+每个 Skill 的唯一源码位于 `skills/<skill-name>/`。平台安装目录、软链接、Plugin 和上传包只是使用或分发方式，不能形成另一份独立维护的源码。
+
+一个可迁移 Skill 必须把运行所需内容全部放在自己的目录中：
+
+```text
+skill-name/
+├── SKILL.md
+├── references/    # 可选
+├── scripts/       # 可选
+├── assets/        # 可选
+└── agents/        # 可选的平台元数据
+```
+
+Skill 可以使用 `references/example.md` 这类内部相对路径，因为目标文件会随整个 Skill 一起迁移。它不能依赖 `/Users/...`、跳出 Skill 根目录的相对路径、外部软链接，或者只存在于原电脑上的蒸馏原料。
+
+核心结构遵循 [Agent Skills 开放规范](https://agentskills.io/specification)。平台专属包装只在真实安装或分发需求出现后增加。
+
+## 当前状态
+
+仓库目前只有一个处于持续校准中的 Skill：
+
+- [`jeese-writing`](skills/jeese-writing/)：把材料或已有草稿整理成结构自然、因果清楚的中文技术文章、学习笔记和个人技术说明。
+
+它目前包含入口指令、稳定写作规则、学习笔记规则、Markdown 习惯、正反例和早期语料观察。下一阶段会继续核对它的真实任务边界和可迁移性，再决定是否改名或拆分。
 
 ```text
 jeese-skills/
+├── AGENTS.md
 ├── README.md
 └── skills/
     └── jeese-writing/
         ├── SKILL.md
-        ├── agents/openai.yaml
+        ├── agents/
         └── references/
 ```
 
-只有 `skills/<skill-name>/` 是源码目录。目录内按实际需要保留 `SKILL.md`、`references/`、`scripts/`、`assets/` 和平台可选元数据，不创建没有用途的占位目录。
+`README.md` 说明项目目的和当前状态；`AGENTS.md` 保存进入仓库工作的 Agent 必须长期遵守的稳定原则。
 
-## 唯一真源
+## 本地使用与同步
 
-每个 Skill 只能有一份可编辑源码，位置固定为 `skills/<skill-name>/`。
+本地 Agent 的发现目录应链接到 `skills/` 中的唯一源码。建立链接前必须先检查目标，不能覆盖未经确认的实体目录。
 
-- Agent 的用户级或项目级发现目录必须通过软链接或目录联接指向这里，不能复制一份再分别修改。
-- 建立链接前先检查目标位置。若那里已有实体目录，应先迁移或合并内容，不能直接覆盖。
-- 将来如果增加 Plugin 或发布包，它们只能由 `skills/` 生成；生成物不是编辑入口，也不能反向成为源码。
-- 代码审查时，如果同名 Skill 同时出现为两个实体目录，应视为唯一真源被破坏。
-
-## 平台适配边界
-
-可移植部分遵循 [Agent Skills 开放规范](https://agentskills.io/)：`SKILL.md` 是入口，引用、脚本和资源与它放在同一个 Skill 目录中。
-
-平台差异留在边界层：
-
-- `agents/openai.yaml` 是 ChatGPT/Codex 的可选界面与调用元数据；不识别它的平台可以忽略该文件。
-- Skill 的本机发现路径由各平台决定，不把机器相关的绝对路径提交进仓库。
-- Codex 的个人发现路径是 `~/.agents/skills/`，并支持链接到仓库中的 Skill。其他 Agent 应按各自文档，把发现路径链接到同一个 `skills/<skill-name>/`。
-- 只有出现跨用户安装、多个 Skill 打包或连接器依赖的真实需求时，才增加 Plugin 层。当前仓库不包含 Plugin。
-
-OpenAI 当前的 Skill 结构、发现位置和软链接支持见 [Build skills](https://developers.openai.com/codex/skills)。
-
-## 在本机建立发现链接
-
-先确认目标不存在，或确认它只是需要替换的旧链接。不要对未经检查的实体目录执行覆盖命令。
-
-macOS / Linux：
-
-```bash
-mkdir -p ~/.agents/skills
-ln -s /absolute/path/to/jeese-skills/skills/jeese-writing ~/.agents/skills/jeese-writing
-```
-
-Windows PowerShell 可使用目录联接：
-
-```powershell
-New-Item -ItemType Directory -Force "$HOME\.agents\skills"
-New-Item -ItemType Junction -Path "$HOME\.agents\skills\jeese-writing" -Target "C:\absolute\path\to\jeese-skills\skills\jeese-writing"
-```
-
-如果平台使用别的发现目录，只替换链接位置，不复制 `skills/` 下的源码。
-
-## 验证 Skill
-
-新增或修改 Skill 后至少完成以下检查：
-
-1. 使用 `skill-creator` 提供的 `quick_validate.py` 校验 Skill 目录。
-2. 确认 `SKILL.md` 的 `name` 与目录名一致，`description` 能准确区分触发范围。
-3. 确认 `SKILL.md` 引用的文件真实存在，没有未完成的脚手架占位内容。
-4. 检查本机发现路径最终解析到仓库内的同一个实体目录。
-5. 运行 `git diff --check`，再审阅实际差异。
-
-验证器路径随 Codex 安装位置而变化，通用调用形式是：
-
-```bash
-python /path/to/skill-creator/scripts/quick_validate.py skills/jeese-writing
-```
+仓库通过私有 GitHub 保存版本：一台电脑修改并推送后，其他电脑拉取同一份源码。不同平台可以使用不同安装方式，但不分别维护 Skill 内容。
