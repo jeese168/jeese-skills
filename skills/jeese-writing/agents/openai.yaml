@@ -1,4 +1,4 @@
 interface:
   display_name: "Jeese 中文写作"
-  short_description: "按 Jeese 的思考与表达习惯撰写中文技术文章"
-  default_prompt: "使用 $jeese-writing 把材料整理成结构自然、因果清楚、适度口语化的中文文章。"
+  short_description: "按 Jeese 的思考与表达习惯撰写和重构中文长文档"
+  default_prompt: "使用 $jeese-writing 把材料整理成结构自然、因果清楚、可以长期保存的中文文章。"

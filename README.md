@@ -88,17 +88,22 @@ Skill 可以使用 `references/example.md` 这类内部相对路径，因为目�
 
 ## 当前状态
 
-仓库目前只有一个处于持续校准中的 Skill：
+仓库目前有两个处于持续校准中的 Skill：
 
-- [`jeese-writing`](skills/jeese-writing/)：把材料或已有草稿整理成结构自然、因果清楚的中文技术文章、学习笔记和个人技术说明。
+- [`jeese-writing`](skills/jeese-writing/)：把材料、对话或已有草稿整理成可以长期保存、维护或发布的中文文章和笔记。
+- [`jeese-explaining`](skills/jeese-explaining/)：在日常对话中讲清概念、机制、区别和有证据权重的现实判断。
 
-它目前包含入口指令、稳定写作规则、学习笔记规则、Markdown 习惯、正反例和早期语料观察。下一阶段会继续核对它的真实任务边界和可迁移性，再决定是否改名或拆分。
+讲解产生的定义、因果链、例子和边界可以成为后续写作的原始材料，但两个 Skill 没有运行时依赖，也不要求同时激活。运行所需材料都收拢在各自的 Skill 目录内；下一阶段会通过真实任务继续核对它们的触发边界。
 
 ```text
 jeese-skills/
 ├── AGENTS.md
 ├── README.md
 └── skills/
+    ├── jeese-explaining/
+    │   ├── SKILL.md
+    │   ├── agents/
+    │   └── references/
     └── jeese-writing/
         ├── SKILL.md
         ├── agents/

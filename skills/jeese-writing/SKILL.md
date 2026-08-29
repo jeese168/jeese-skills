@@ -1,11 +1,11 @@
 ---
 name: jeese-writing
-description: Draft, restructure, or revise long-form Simplified Chinese learning notes, technical explainers, and personal technical articles in Jeese's writing style. Use for Chinese Markdown prose that should be direct, causally connected, naturally structured, mildly conversational, and free of repetitive AI framing. For formal proposals, specifications, or PRDs, use this skill only as the voice layer and preserve the document's own required structure. Do not use for code-only tasks, short chat replies, marketing copy, or fiction.
+description: Draft, restructure, or revise durable long-form Simplified Chinese learning notes, technical articles, retrospectives, and personal Markdown documents in Jeese's writing style. Use when source material or an existing draft should become a coherent document that can be saved, maintained, or published. For formal proposals, specifications, or PRDs, use this skill only as the voice layer and preserve the document's required structure. Do not use for conversational explanations, code-only tasks, short chat replies, marketing copy, or fiction.
 ---
 
 # Jeese Writing
 
-Write clear Chinese prose in Jeese's preferred voice without copying the interview-question format of the source corpus.
+Write clear Chinese prose in Jeese's preferred voice without mechanically copying the interview-question format recorded in the bundled calibration materials.
 
 ## Load the right guidance
 
@@ -13,7 +13,8 @@ Write clear Chinese prose in Jeese's preferred voice without copying the intervi
 2. For learning notes, concept explanations, technical retrospectives, or personal technical articles, also read [references/learning-notes.md](references/learning-notes.md).
 3. When creating or restructuring a Markdown document, also read [references/markdown-format.md](references/markdown-format.md).
 4. When drafting or substantially rewriting prose, read [references/examples-and-counterexamples.md](references/examples-and-counterexamples.md).
-5. Read [references/corpus-observations.md](references/corpus-observations.md) only when auditing, extending, or recalibrating this skill. Do not load it for ordinary writing.
+5. For writing about real-world probability, behavior, social or historical patterns, empirical risk, or competing explanations of actual events, also read [references/reality-judgment.md](references/reality-judgment.md).
+6. Read [references/corpus-observations.md](references/corpus-observations.md) only when auditing, extending, or recalibrating this skill. Do not load it for ordinary writing.
 
 Do not invent a genre profile. For proposals, specifications, design documents, PRDs, incident reports, or other structured artifacts, follow the user's template and the destination repository's conventions first. Apply only the shared voice rules from `core-style.md` unless a dedicated profile is later added.
 
@@ -26,7 +27,9 @@ Before drafting, determine:
 - which claims come from sources, which are the author's judgment, and which remain uncertain;
 - whether the destination already has heading, metadata, citation, or formatting conventions.
 
-Inspect relevant source material and nearby destination documents when available. Treat the interview-note corpus as style evidence, not technical authority. Verify factual claims from appropriate sources rather than inheriting old notes uncritically.
+Complete the necessary analysis and material synthesis before drafting. Write the most stable current understanding rather than reproducing the chronology of tentative classifications, abandoned structures, or conversational self-correction.
+
+Inspect relevant source material and nearby destination documents when available. Use the bundled style rules, observations, and examples as writing evidence, not technical authority. Do not assume the original calibration corpus exists outside this skill. Verify factual claims from appropriate sources rather than inheriting old notes uncritically.
 
 ## Build the article around its subject
 
@@ -50,6 +53,7 @@ When explaining a collaborative system, permission model, workflow, or UI operat
 - Explain each concept sufficiently at its first occurrence; do not scatter missing premises across distant sections.
 - Let paragraphs carry connected thought. Use lists, tables, code, diagrams, or quotes only when the information itself has that structure.
 - Preserve useful uncertainty. Do not convert inference or preference into fact.
+- Keep established judgments and their confidence stable unless the evidence changes. When correcting a prior claim, state what changed and why instead of presenting the correction as another angle.
 - During revision, remove repeated conclusions, delayed qualifications, empty transitions, decorative headings, and fragmented bullets.
 - If rewriting existing prose, preserve the author's claims and intent unless the user asked for factual correction or restructuring.
 
