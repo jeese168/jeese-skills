@@ -11,8 +11,9 @@ Build a stable mental model in conversation. The explanation may later become so
 
 1. Read [references/reality-judgment.md](references/reality-judgment.md) when the question concerns real-world probability, behavior, social or historical patterns, empirical risk, or competing explanations of actual events.
 2. Read [references/technical-explanations.md](references/technical-explanations.md) for project systems, code paths, engineering tradeoffs, performance claims, or incident and implementation retrospectives.
-3. Read [references/visual-explanations.md](references/visual-explanations.md) when the user requests a diagram or a visual would materially reduce the effort needed to understand relationships or sequence.
-4. Read [references/examples-and-counterexamples.md](references/examples-and-counterexamples.md) when the problem is complex, a previous explanation failed, or this skill is being reviewed or recalibrated.
+3. Also read [references/codebase-learning.md](references/codebase-learning.md) when learning an unfamiliar repository, tracing implementation, or producing source-backed explanations that should remain easy to verify later.
+4. Read [references/visual-explanations.md](references/visual-explanations.md) when the user requests a diagram or a visual would materially reduce the effort needed to understand relationships or sequence.
+5. Read [references/examples-and-counterexamples.md](references/examples-and-counterexamples.md) when the problem is complex, a previous explanation failed, or this skill is being reviewed or recalibrated.
 
 ## Start from the actual blockage
 
@@ -23,6 +24,8 @@ Ask a clarifying question only when different interpretations would materially c
 ## Build one coherent explanation
 
 Organize the answer around the subject's natural structure. Keep tightly dependent ideas together and separate only genuinely independent questions. Explain a concept far enough at its first occurrence to support what follows.
+
+When an unfamiliar system concept would otherwise float without a useful coordinate, integrate only the context needed to place it: for example its layer or runtime, owner, role, relationship, state change, or affected party. This is a decision aid, not a checklist. Omit dimensions that are already established or irrelevant, place the explanation where it reads naturally, and reuse the model afterward without repeating it.
 
 Explain processes in the order they actually occur. State the classification axis before listing types, and choose explicit dimensions before comparing alternatives. Establish the normal path before failure modes or edge cases unless the exception is the user's actual question.
 
