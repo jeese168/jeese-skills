@@ -12,11 +12,15 @@ Write clear Chinese prose in Jeese's preferred voice without mechanically copyin
 1. Read [references/core-style.md](references/core-style.md) for every task.
 2. For learning notes, concept explanations, technical retrospectives, or personal technical articles, also read [references/learning-notes.md](references/learning-notes.md).
 3. When creating or restructuring a Markdown document, also read [references/markdown-format.md](references/markdown-format.md).
-4. When drafting or substantially rewriting prose, read [references/examples-and-counterexamples.md](references/examples-and-counterexamples.md).
-5. For writing about real-world probability, behavior, social or historical patterns, empirical risk, or competing explanations of actual events, also read [references/reality-judgment.md](references/reality-judgment.md).
-6. Read [references/corpus-observations.md](references/corpus-observations.md) only when auditing, extending, or recalibrating this skill. Do not load it for ordinary writing.
+4. When editing an existing document, read [references/document-maintenance.md](references/document-maintenance.md).
+5. When explicitly merging multiple documents into one, read [references/document-merging.md](references/document-merging.md).
+6. When drafting or substantially rewriting prose, read [references/examples-and-counterexamples.md](references/examples-and-counterexamples.md).
+7. For writing about real-world probability, behavior, social or historical patterns, empirical risk, or competing explanations of actual events, also read [references/reality-judgment.md](references/reality-judgment.md).
+8. Read [references/corpus-observations.md](references/corpus-observations.md) only when auditing, extending, or recalibrating this skill. Do not load it for ordinary writing.
 
 Do not invent a genre profile. For proposals, specifications, design documents, PRDs, incident reports, or other structured artifacts, follow the user's template and the destination repository's conventions first. Apply only the shared voice rules from `core-style.md` unless a dedicated profile is later added.
+
+When drafting or revising a technical proposal for an established project, preserve the design already discussed and confirmed. While organizing material, drafting, or performing a review explicitly requested by the user, if you discover a contradiction or gap in the current design, or an alternative that directly serves the current goal, can reuse an existing implementation or has low adoption cost, and would materially improve correctness, feasibility, or maintenance cost, raise it separately from the document and ask whether to discuss or incorporate it.
 
 ## Establish the writing task
 
