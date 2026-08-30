@@ -1,0 +1,6 @@
+interface:
+  display_name: "Jeese 修改交付"
+  short_description: "把已完成的精确修改整理成带上下文、可逐项审核的说明"
+  default_prompt: "使用 $jeese-change-review 讲清楚刚才具体修改了什么，保留审核所需的上下文。"
+policy:
+  allow_implicit_invocation: false
