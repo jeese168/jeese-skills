@@ -1,6 +1,6 @@
 ---
 name: jeese-writing
-description: Draft, restructure, or revise durable long-form Simplified Chinese learning notes, technical articles, retrospectives, and personal Markdown documents in Jeese's writing style. Use when source material or an existing draft should become a coherent document that can be saved, maintained, or published. For formal proposals, specifications, or PRDs, use this skill only as the voice layer and preserve the document's required structure. Do not use for conversational explanations, code-only tasks, short chat replies, marketing copy, or fiction.
+description: Draft, restructure, or revise durable long-form Simplified Chinese learning notes, technical articles, retrospectives, and personal Markdown documents in Jeese's writing style. Use when source material or an existing draft should become a coherent document that can be saved, maintained, or published. For formal proposals, specifications, or PRDs, apply this skill's reasoning, organization, and voice while preserving the structure established by the task and destination project. Do not use for conversational explanations, code-only tasks, short chat replies, marketing copy, or fiction.
 ---
 
 # Jeese Writing
@@ -18,9 +18,7 @@ Write clear Chinese prose in Jeese's preferred voice without mechanically copyin
 7. For writing about real-world probability, behavior, social or historical patterns, empirical risk, or competing explanations of actual events, also read [references/reality-judgment.md](references/reality-judgment.md).
 8. Read [references/corpus-observations.md](references/corpus-observations.md) only when auditing, extending, or recalibrating this skill. Do not load it for ordinary writing.
 
-Do not invent a genre profile. For proposals, specifications, design documents, PRDs, incident reports, or other structured artifacts, follow the user's template and the destination repository's conventions first. Apply only the shared voice rules from `core-style.md` unless a dedicated profile is later added.
-
-When drafting or revising a technical proposal for an established project, preserve the design already discussed and confirmed. While organizing material, drafting, or performing a review explicitly requested by the user, if you discover a contradiction or gap in the current design, or an alternative that directly serves the current goal, can reuse an existing implementation or has low adoption cost, and would materially improve correctness, feasibility, or maintenance cost, raise it separately from the document and ask whether to discuss or incorporate it.
+For proposals, specifications, design documents, PRDs, incident reports, or other structured artifacts, apply the stable reasoning, organization, and voice preferences in `core-style.md` throughout. Determine the genre-specific structure, required sections, metadata, and heading hierarchy first from the current task and explicit destination-repository rules, then from an existing document that the user or project designates as a reference, or from stable patterns repeated across relevant documents of the same genre and audience. A single existing document establishes a convention only when the user or project identifies it as a reference; otherwise distinguish repeated practice from an author's incidental choice. Use dedicated genre guidance in `references/` for remaining genre defaults. An explicitly required template is part of the current task; otherwise treat a standalone blank or semi-blank template as a fallback when the stronger sources above do not establish the structure. If no applicable structure is established, organize the document around its actual content. When an applicable project structure conflicts with a personal formatting default, follow that structure while preserving all compatible core preferences.
 
 ## Establish the writing task
 
@@ -60,6 +58,10 @@ When explaining a collaborative system, permission model, workflow, or UI operat
 - Keep established judgments and their confidence stable unless the evidence changes. When correcting a prior claim, state what changed and why instead of presenting the correction as another angle.
 - During revision, remove repeated conclusions, delayed qualifications, empty transitions, decorative headings, and fragmented bullets.
 - If rewriting existing prose, preserve the author's claims and intent unless the user asked for factual correction or restructuring.
+
+## Confirm what belongs in a technical proposal
+
+This applies only when turning prior discussion into a technical proposal for an established project, or when revising such a proposal. Put designs that have been discussed and confirmed into the document. Keep approaches raised during discussion but not yet accepted outside the document, and ask whether to continue discussing or incorporate them. While organizing material, drafting, or performing a review explicitly requested by the user, if you naturally discover a contradiction or gap in the current design, or a candidate approach that directly serves the current goal, can reuse an existing implementation or has low adoption cost, and would materially improve correctness, feasibility, or maintenance cost, raise it separately from the document and let the user decide whether to adjust the proposal.
 
 ## Deliver the result
 
