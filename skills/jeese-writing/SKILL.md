@@ -5,7 +5,7 @@ description: Draft, restructure, or revise durable long-form Simplified Chinese 
 
 # Jeese Writing
 
-Write clear Chinese prose in Jeese's preferred voice without mechanically copying the interview-question format recorded in the bundled calibration materials.
+Write clear Chinese prose in Jeese's preferred voice without mechanically copying the interview-question structure identified in `references/corpus-observations.md`.
 
 ## Load the right guidance
 
@@ -18,7 +18,7 @@ Write clear Chinese prose in Jeese's preferred voice without mechanically copyin
 7. For writing about real-world probability, behavior, social or historical patterns, empirical risk, or competing explanations of actual events, also read [references/reality-judgment.md](references/reality-judgment.md).
 8. Read [references/corpus-observations.md](references/corpus-observations.md) only when auditing, extending, or recalibrating this skill. Do not load it for ordinary writing.
 
-For proposals, specifications, design documents, PRDs, incident reports, or other structured artifacts, apply the stable reasoning, organization, and voice preferences in `core-style.md` throughout. Determine the genre-specific structure, required sections, metadata, and heading hierarchy first from the current task and explicit destination-repository rules, then from an existing document that the user or project designates as a reference, or from stable patterns repeated across relevant documents of the same genre and audience. A single existing document establishes a convention only when the user or project identifies it as a reference; otherwise distinguish repeated practice from an author's incidental choice. Use dedicated genre guidance in `references/` for remaining genre defaults. An explicitly required template is part of the current task; otherwise treat a standalone blank or semi-blank template as a fallback when the stronger sources above do not establish the structure. If no applicable structure is established, organize the document around its actual content. When an applicable project structure conflicts with a personal formatting default, follow that structure while preserving all compatible core preferences.
+For proposals, specifications, design documents, PRDs, incident reports, or other structured artifacts, apply the stable reasoning, organization, and voice preferences in `references/core-style.md` throughout. Determine the genre-specific structure, required sections, metadata, and heading hierarchy first from the current task and explicit destination-repository rules, then from an existing document that the user or project designates as a reference, or from stable patterns repeated across relevant documents of the same genre and audience. A single existing document establishes a convention only when the user or project identifies it as a reference; otherwise distinguish repeated practice from an author's incidental choice. If the routing list above selects a task-specific reference, use that file for the remaining task-specific defaults. An explicitly required template is part of the current task; otherwise treat a standalone blank or semi-blank template as a fallback when the stronger sources above do not establish the structure. If no applicable structure is established, organize the document around its actual content. When an applicable project structure conflicts with a default in `references/markdown-format.md`, follow the project structure while preserving all compatible rules from `references/core-style.md`.
 
 ## Establish the writing task
 

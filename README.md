@@ -90,7 +90,7 @@ skill-name/
 
 Skill 可以使用 `references/example.md` 这类内部相对路径，因为目标文件会随整个 Skill 一起迁移。它不能依赖 `/Users/...`、跳出 Skill 根目录的相对路径、外部软链接，或者只存在于原电脑上的蒸馏原料。
 
-核心结构遵循 [Agent Skills 开放规范](https://agentskills.io/specification)。平台专属包装只在真实安装或分发需求出现后增加。
+核心结构遵循 [Agent Skills 开放规范](https://agentskills.io/specification)。平台需要的元数据位于 Skill 内的 `agents/`；Plugin 或其他平台要求的分发文件，只在真实安装或分发需求出现后增加。
 
 ## 当前状态
 
@@ -98,7 +98,7 @@ Skill 可以使用 `references/example.md` 这类内部相对路径，因为目�
 
 - [`jeese-writing`](skills/jeese-writing/)：把材料、对话或已有草稿整理成可以长期保存、维护或发布的中文文章和笔记。
 - [`jeese-explaining`](skills/jeese-explaining/)：在日常对话中讲清概念、机制、区别和有证据权重的现实判断。
-- [`jeese-change-review`](skills/jeese-change-review/)：在明确调用后，读取已经完成的实际修改，把精确对象、前后变化、影响和验证整理成可以逐项审核的中文交付说明。
+- [`jeese-change-review`](skills/jeese-change-review/)：在明确调用后，检查已经完成的修改或用户指定的代码、配置、文档和 Skill，把实际变化或审查发现连同上下文、影响、证据和建议整理成可以逐项审核的中文说明。
 
 讲解产生的定义、因果链、例子和边界可以成为后续写作的原始材料。三个 Skill 彼此没有运行时依赖，也不要求同时激活；`jeese-change-review` 只在明确调用时启用。运行所需材料都收拢在各自的 Skill 目录内，下一阶段会通过真实任务继续核对它们的触发边界。
 
