@@ -1,37 +1,34 @@
 ---
 name: jeese-engineers
 description: >-
-  Handle Jeese's dual-window engineering handoff when explicitly invoked as
-  jeese-engineers: list absolute paths of files actually written to disk
-  (this-round incremental or feature-related full), generate an objective
-  review brief, write review findings from user-assembled materials,
-  independently verify another agent's review into three dispositions, or
-  explain a completed change at the asked scope. Use only when the user
-  explicitly invokes this skill or names jeese-engineers. Do not use for
-  ordinary conversation, long-form writing, OpenSpec planning, or as a
-  substitute for jeese-explaining, jeese-writing, or jeese-change-review.
+  Support Jeese's engineering handoff when explicitly invoked: list
+  incremental or feature-related full absolute file paths, generate a
+  self-contained review prompt for the current work, independently verify
+  returned findings into three dispositions, or explain completed changes
+  at the requested depth. Also perform a standalone consistency review of
+  specified existing technical or OpenSpec documents when explicitly
+  requested. Use only when the user invokes jeese-engineers. This skill
+  adapts handoff and explanation; it does not define an engineering workflow
+  or author and advance OpenSpec changes.
 ---
 
 # Jeese Engineers
 
-这是执行窗口和审查窗口之间的交接协议。用户自己搬运材料，各窗口只交本轮指定的那一种产物。用户点名本 Skill 之后才按下面的情况工作。
+用户手动调用本 Skill，选择要交付的产物，并自己搬运双窗口之间的材料。常用任务是列路径、生成送审指令、核实返回的意见，以及讲解改动；独立核查已有文档是另一个低频、明确触发的用途。
 
 先判断**这一轮要交的产物是哪一种**。五种情况互斥：一次只走一条。用户指定了产物，就按指定走；没指定时，结合当前窗口上下文判断这条消息里贴来的材料。只有点名，或材料仍不足以确定任务时，先询问，等用户确认再进入对应情况。对照少样本：[指定了就按指定、有材料就按材料](references/examples-and-counterexamples.md#指定了就按指定有材料就按材料)、[只有点名时询问或按进度推荐](references/examples-and-counterexamples.md#只有点名时询问或按进度推荐)、[有材料但任务仍不明确时针对歧义询问](references/examples-and-counterexamples.md#有材料但任务仍不明确时针对歧义询问)。
 
-**用户指定了。** 这句话里已经点明要路径、审查指令、审查发现、三类核实，或只讲某一个改动点：按指定进入对应情况。用户偷懒只写了 `/jeese-engineers`，但同一条消息里已经带了材料的，仍先看材料，不把「没写要干什么」当成空调用。
+**用户指定了。** 这句话里已经点明要落盘路径、生成送审指令、独立核查指定文档、核实返回的意见，或讲解改动：按指定进入对应情况。用户只写了 `/jeese-engineers`，但同一条消息里已经带了材料的，结合上下文判断任务。
 
-**没指定，但材料对得上。** 靠材料形状就能分开、不必再问的，主要是这两种：
+**没指定，但材料对得上。** 执行窗口收到按条列出对象、问题、建议的审查发现，当前上下文也表明这是送回来的意见时，直接进入情况四。仅有文件路径、方案文字或问题列表，还不足以证明用户要独立核查文档；情况三需要清楚的文档核查意图。
 
-- 贴来的是给审查窗口用的那一包：审查指令，加上被审的方案原文，或落盘文件的绝对路径和路径说明 → 情况三，写发现。
-- 贴来的是审查窗口已经写好的发现：按条列出对象、问题、建议，要执行窗口消化 → 情况四，核实成三类。
-
-审查指令加被审对象，和「已经写好的审查发现」，不是同一类材料。前一种是送去审的；后一种是审完送回来的。情况一、二、五主要靠你指定要路径、要审查指令、或要讲某一个改动；空调用时用下面的询问或推荐。五种情况不必拆成五个 Skill。
+**双窗口送审的交接。** 情况二生成的指令包含审查任务和回复要求，用户自行拼接对象后交给审查窗口。审查窗口直接执行这份指令，无需再次调用本 Skill。若用户仍在完整指令旁点名本 Skill，按已经明确的指令执行；这不改变情况三的独立文档核查用途。同一审查窗口的后续复查沿用已收到的指令，并以用户的新要求和新材料为准。
 
 **只有点名。** 用户就是发了 `/jeese-engineers` 或同等点名，同一条里没有指定、也没有上面那些材料：停下来问这一轮要交什么。问法跟着当前窗口走，可以给一个推荐，例如刚改完代码、路径还没交，推荐先做情况一；路径已经有了、审查指令还没有，推荐情况二。推荐之后等用户应一声再做。五种产物做成固定选择题、每轮都点一遍，不是这一步要的问法。
 
 **有材料，但任务仍不明确。** 结合材料和当前上下文仍无法确定要做哪一种时，说明最可能的理解，针对实际歧义问一句，等用户确认。材料足以确定任务时，直接进入对应情况。
 
-认准后再读取对应 reference，只读这一条，并按该文件指出的少样本标题对照。
+认准后只进入对应情况，读取它的 reference 和其中指向的必要资料，按给出的少样本标题对照。
 
 用户说「全量」或「存量」时，都按全量处理：收齐和当前功能、需求相关的已落盘文件。用户说「增量」时，只收本次指定的修改任务中实际落盘的文件；事后单独索要路径时，指向用户所指的那次已完成修改。
 
@@ -50,25 +47,25 @@ description: >-
 
 读 [references/landed-paths.md](references/landed-paths.md)。
 
-## 情况二：生成给审查窗口用的指令
+## 情况二：为当前方案或改动生成完整送审指令
 
 时机是改完、输出完，也包括情况一的路径已经整理完之后，用户再点名，要求生成审查指令。
 
-产物是直接打在对话里的一份审查指令。这份指令足够让另一个窗口按材料审查，并且对执行窗口自己保持客观。
+产物是直接打在对话里的一份可独立使用的审查指令。它围绕当前方案或改动，写清审查对象、背景、范围、判断依据、与相关实现的配合，以及审查意见怎样回复。执行窗口自己的实现选择也应接受核对。
 
 读 [references/review-brief.md](references/review-brief.md)。
 
 用户会自己把原始材料或路径包起来，再拼上这份指令，贴到审查窗口。拼接是用户的工作。
 
-## 情况三：审查窗口根据用户拼好的材料写发现
+## 情况三：独立核查指定的已有技术文档
 
-用户贴来的是拼接好的送审包：被审的技术方案原文，或落盘文件的绝对路径及说明，外加给审查窗口用的指令。用户点了要审查、找问题，或只在材料首尾加了本 Skill 的点名，都走这里。
+用户明确要求检查指定的已有技术方案、技术笔记或 OpenSpec 文档，核对它与当前代码、相关约定或适用的外部技术资料是否一致时进入。对象可以在当前工作区之外，按用户给出的绝对路径读取。
 
-产物是直接打在对话里的审查发现。按条写问题：对象是什么、为什么成立、建议怎么改。这一窗口只报告发现。
+这是低频、保守触发的直接核查。仅出现 Markdown 路径、OpenSpec 名称或文档可能过时的迹象时，保持当前任务；核查意图明确但对象或依据不清时，针对缺口询问。
 
-读 [references/review-findings.md](references/review-findings.md)。
+产物是直接打在对话里的核查发现、依据和建议。区分文档过时、实现偏离约定、计划尚未实施，以及证据不足；文件修改由用户后续指令决定。
 
-同一审查窗口里，第一轮之后用户只用很短的话再审一轮时，仍按情况三，沿用已经加载的规则。
+读 [references/document-review.md](references/document-review.md)。
 
 ## 情况四：执行窗口把审查结论核实成三类
 
