@@ -100,13 +100,14 @@ Skill 可以使用 `references/example.md` 这类内部相对路径，因为目�
 
 ## 当前状态
 
-仓库目前有三个处于持续校准中的 Skill：
+仓库目前有三个处于持续校准中的 Skill，以及一个新建、待整理的 Skill：
 
 - [`jeese-writing`](skills/jeese-writing/)：把材料、对话或已有草稿整理成可以长期保存、维护或发布的中文文章和笔记。
 - [`jeese-explaining`](skills/jeese-explaining/)：在日常对话中讲清概念、机制、区别和有证据权重的现实判断。
 - [`jeese-change-review`](skills/jeese-change-review/)：在明确调用后，检查已经完成的修改或用户指定的代码、配置、文档和 Skill，把实际变化或审查发现连同上下文、影响、证据和建议整理成可以逐项审核的中文说明。
+- [`jeese-engineers`](skills/jeese-engineers/)：用户明确调用后，处理执行窗口和审查窗口之间的交接：列出实际落盘文件的绝对路径、生成客观的审查指令、根据用户拼接的材料写审查发现、把另一窗口的结论核实成三类，或按用户问的范围讲已经改了什么。它目前独立存放，尚未与 `jeese-change-review` 合并。
 
-讲解产生的定义、因果链、例子和边界可以成为后续写作的原始材料。三个 Skill 彼此没有运行时依赖，也不要求同时激活；`jeese-change-review` 只在明确调用时启用。运行所需材料都收拢在各自的 Skill 目录内，下一阶段会通过真实任务继续核对它们的触发边界。
+讲解产生的定义、因果链、例子和边界可以成为后续写作的原始材料。这些 Skill 彼此没有运行时依赖，也不要求同时激活；`jeese-change-review` 和 `jeese-engineers` 只在明确调用时启用。运行所需材料都收拢在各自的 Skill 目录内，下一阶段会通过真实任务继续核对它们的触发边界。
 
 ```text
 jeese-skills/
@@ -114,6 +115,10 @@ jeese-skills/
 ├── README.md
 └── skills/
     ├── jeese-change-review/
+    │   ├── SKILL.md
+    │   ├── agents/
+    │   └── references/
+    ├── jeese-engineers/
     │   ├── SKILL.md
     │   ├── agents/
     │   └── references/

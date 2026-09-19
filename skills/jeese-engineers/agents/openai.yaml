@@ -1,0 +1,6 @@
+interface:
+  display_name: "Jeese 工程协作"
+  short_description: "手动触发的双窗口工程交接：落盘路径、审查指令、发现与三类核实"
+  default_prompt: "使用 $jeese-engineers，先确认这一轮要交的是落盘路径、审查指令、审查发现、三类核实，还是只讲某一个改动点。"
+policy:
+  allow_implicit_invocation: false
