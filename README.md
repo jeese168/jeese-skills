@@ -85,6 +85,10 @@ reference 不是另一个 Skill，而是同一个 Skill 的内部资料。组织
 
 局部追问复用针对性解答，不重跑完整流程。独立概念问题不强制落盘；已有任务中，只有新事实、纠正或范围变化等影响后续理解时才更新原记录。源码带读的追问保留阅读位置，用户说继续后接回主线。
 
+分阶段产物在自由 Markdown 正文外使用少量模式、阶段和本轮标记，每阶段落盘后运行内置的 Python 3 结构检查脚本。脚本只读指定任务文件，检查截至当前阶段的区块是否存在、非空；需要图时检查文内 PlantUML、Mermaid 或线条示意的代码块，不要求独立图片文件。它不判断概念是否讲清、事实是否正确，也不保证模型实际遵循了执行顺序。格式和调用方式见 [结构检查约定](skills/jeese-explaining-workflow/references/artifact-checks.md)。
+
+中间产物的完整有效内容仍在上下文时直接复用；缺失、截断或发生修订时，可用脚本的 `--read-stages` 按轮次和阶段补读，不每阶段重读整份历史。补读与校验分开：每阶段的真实落盘及 `--through` 校验仍然必需，不能以“上下文已有”或“读取成功”替代。
+
 例如可以显式调用：
 
 - `使用 $jeese-explaining-workflow，标准模式，按协作与机制的深度讲清这个模块；目的是为当前重构建立理解。`
@@ -146,7 +150,8 @@ jeese-skills/
     ├── jeese-explaining-workflow/
     │   ├── SKILL.md
     │   ├── agents/
-    │   └── references/
+    │   ├── references/
+    │   └── scripts/
     └── jeese-writing/
         ├── SKILL.md
         ├── agents/
