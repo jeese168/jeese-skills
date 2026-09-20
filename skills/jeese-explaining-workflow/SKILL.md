@@ -1,18 +1,20 @@
 ---
 name: jeese-explaining-workflow
 description: >-
-  Explain concepts and systems to Jeese when explicitly invoked for learning,
-  understanding a module, or clarifying a current task. Use standard or quick
-  understanding workflows with staged Markdown artifacts, or answer specific
-  questions directly. Adapt depth and diagrams to the user's purpose and prior
-  understanding. This skill explains; it does not perform an engineering change.
+  Explain project-specific concepts, code, and systems to Jeese when explicitly
+  invoked for learning a project, understanding a module, or clarifying a current
+  engineering task. Use staged standard explanations, quick understanding, or
+  source-code walkthroughs, or answer specific questions directly. Adapt depth
+  and diagrams to the user's purpose and prior understanding. This skill
+  explains; it does not perform an engineering change
+  or handle everyday social or historical judgments.
 ---
 
 # Jeese Explaining Workflow
 
-用符合 Jeese 思维方式的中文把这次要理解的内容讲清楚，让用户能够继续阅读、判断、提问或做事。标准和快速模式用已经写出的阶段产物引导后续生成；针对性解答围绕所问内容直接讲。
+用于具体项目中的代码、模块、系统机制和工程问题，用符合 Jeese 思维方式的中文讲清楚，让用户能够继续阅读、判断、提问或做事。包括根据源码及现场材料查证和讲解 Bug，但不因此授权修改项目代码、配置或替用户决定跨模块的工程归属。社会、历史、日常行为等现实判断不属于本 Skill 的范围。分阶段路线用已有产物引导后续生成；针对性解答围绕所问内容直接讲。
 
-用户显式调用本 Skill 后使用。后续对同一问题的追问沿用已经建立的理解；不要每轮重新询问整套设置。当前版本先实现以下三种模式，不要求覆盖旧讲解 Skill 的全部用途，也不安排自动学习进度。
+用户显式调用本 Skill 后使用。后续对同一问题的追问沿用已经建立的理解；不要每轮重新询问整套设置。当前提供以下四种模式，不要求覆盖旧讲解 Skill 的全部用途，也不安排自动学习进度。
 
 ## 先认清本次模式和目的
 
@@ -21,23 +23,26 @@ description: >-
 | 把选定范围内的内容讲清楚，形成可继续思考的认识 | 标准 | 四阶段；文字为主、图为辅，图文配合 |
 | 快速建立可用认识，降低阅读负担 | 快速了解 | 三阶段；积极选择直观呈现，文字补足必要解释 |
 | 解释一个概念，或回答明确的一点、几点疑问 | 针对性解答 | 围绕所问内容回答，不自动扩成全景讲解 |
+| 一边看解释一边对照源码，沿入口、调用路径或对象生命周期阅读 | 源码带读 | 四阶段；解释对应实际文件与符号，可一次交付或按用户节奏分段 |
 
 用户已指定模式就按指定走，不能因为题目短就覆盖明确的标准或快速要求。仅点名 Skill、模式仍不明时，结合目的给一个建议，询问并等答复。普通追问只修补所问内容，不自动重跑上一轮完整工作流；用户要求重新讲全或切换模式时再进入对应路线。
 
-三种模式都先看本轮要求和最近相关对话，明确这次理解是为了什么。为具体需求、重构或故障做准备时，围绕这件事组织；从零学习对象时，必要背景和整体机制属于范围。上下文无法确定目的且会影响讲解时，问清用途。不能把“结合任务”缩成“只讲马上要修改的代码”。
+各模式都先看本轮要求和最近相关对话，明确这次理解是为了什么。为具体需求、重构或故障做准备时，围绕这件事组织；从零学习对象时，必要背景和整体机制属于范围。上下文无法确定目的且会影响讲解时，问清用途。不能把“结合任务”缩成“只讲马上要修改的代码”。
 
-一次执行一种模式。标准、快速之间的切换由用户指令触发；不要自动先快后慢。图的数量、源码层级、参与端数都不是模式判定标准。
+标准和快速模式在准备时区分用途：**普通学习**讲现有代码和机制；**Bug 诊断讲解**用于用户明确要求根据 QA 问题、异常表现或现场材料查原因、讲异常、提出修改建议的任务。从第一阶段起读取对应分支，保持本模式阶段数，不新增顶层排查路线。源码里有异常分支、日志或错误码，不自动表示用户要排查 Bug。用户已指定源码带读或只问一点时保留指定模式，按需解释异常，不偷偷改走另一套流程。
+
+一次执行一种模式。模式切换由用户指令触发；不要自动先快后慢。源码带读中的局部追问由针对性解答承接，保留原阅读位置；用户说继续时再接主线。图的数量、源码层级、参与端数都不是模式判定标准。
 
 ## 按路线逐步读取
 
 - **针对性解答**：只读 [focused.md](references/focused.md)，按其中说明补充当前问题需要的资料。不要先运行落盘准备。
-- **标准、快速了解**：先读 [start.md](references/start.md)，确认深度和落盘位置，留下任务说明。准备完成后，标准读 [standard.md](references/standard.md)，快速读 [quick.md](references/quick.md)。
+- **标准、快速了解、源码带读**：先读 [start.md](references/start.md)，确认深度和落盘位置，留下任务说明。准备完成后只读对应路线：标准读 [standard.md](references/standard.md)，快速读 [quick.md](references/quick.md)，源码带读读 [source-reading.md](references/source-reading.md)。
 
 路线文件说明各阶段要读什么、生成什么、何时可以继续。仅加载当前阶段指定的指导，不能为了准备充分，提前读完所有阶段的 references 再一次生成全部产物。源码、用户提供的文档等证据，可以按当前查证需要读取；延后的是后续阶段的执行指导，不是当前必需的事实依据。
 
 ## 阶段必须留下可使用的结果
 
-标准和快速模式遵循以下协议：
+标准、快速和源码带读遵循以下协议：
 
 1. 进入阶段时，读取前阶段的最新落盘内容，再读取本阶段的指导和退出条件。
 2. 完成本阶段实际内容并写入 Markdown。写的是概念说明、查证结果、关系、图文草稿或组织决定，不是完整内部推理，也不是“已思考、已检查”这样的声明。
@@ -52,10 +57,10 @@ description: >-
 
 默认由主 Agent 执行和自检，不主动派子 Agent，也不每次询问是否增加审查。
 
-用户明确要求最终生成前让子 Agent 检查中间产物时，记录本次要求，在标准第三阶段／快速第二阶段完成后、最终讲解生成前，读取 [review.md](references/review.md)，调用 `jeese-engineers` 情况六。该检查点内由主 Agent 交接、核实并修正，完成后继续本模式下一阶段，不要求用户搬运材料或批准中间修订。
+用户明确要求最终生成前让子 Agent 检查中间产物时，记录本次要求，在标准或源码带读第三阶段／快速第二阶段完成后、最终讲解生成前，读取 [review.md](references/review.md)，调用 `jeese-engineers` 情况六。该检查点内由主 Agent 交接、核实并修正，完成后继续本模式下一阶段，不要求用户搬运材料或批准中间修订。
 
 默认一次审查；确需复查时按情况六的限定处理，不每阶段派 Agent。可选能力缺失或独立审查没有完成时，不冒充通过或静默跳过。阶段顺序与审查用于提高遵循稳定性，不是外部程序强制的执行保证。
 
 ## 资料与当前范围
 
-三种讲解模式的基础指导均在本 Skill 内；不要求安装旧 `jeese-explaining` 或重新读取原始笔记。只有用户要求的可选独立审查依赖当前环境可用的 `jeese-engineers` 情况六和子 Agent 能力。所用例子是解释方法的示意，不能作为目标项目的事实。查证、概念展开和视觉表达仍按当前材料决定，不把游戏项目、某个框架或某种图写成唯一适用对象。
+各讲解模式的基础指导均在本 Skill 内；不要求安装旧 `jeese-explaining` 或重新读取原始笔记。只有用户要求的可选独立审查依赖当前环境可用的 `jeese-engineers` 情况六和子 Agent 能力。所用例子是解释方法的示意，不能作为目标项目的事实。查证、概念展开和视觉表达仍按当前材料决定，不把游戏项目、某个框架或某种图写成唯一适用对象。
