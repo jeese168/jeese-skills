@@ -10,6 +10,8 @@
 
 涉及需要补查的项目事实时读 [evidence.md](evidence.md) 并核对依据。出现尚未建立的关键概念时读 [concepts.md](concepts.md)，在当前回答中应用其解释方法，不运行该文件的阶段落盘要求。只有视觉材料更能说明所问关系时读 [visuals.md](visuals.md)。需要较长的组织或上一轮讲得不清时，读 [organization.md](organization.md) 中与当前卡点有关的写法，不执行标准路线。
 
+问到“是否必须这样写”或“当初为什么这样设计”等项目要求、设计动机时，按 [证据边界](evidence.md#区分项目要求实现作用与设计动机) 核对与表达，仍只回答这一点，不因此展开完整方案审查或补造阶段文件。
+
 用户明确追问某次 Bug 的局部判断时，可按需读取 [bug-evidence.md](bug-evidence.md) 或 [bug-diagnosis.md](bug-diagnosis.md) 核对这一点，问修改位置时再读 [bug-explanation.md](bug-explanation.md) 的相关部分；不因此新建一套阶段产物或调查无关链路。普通的代码语义问题不加载这些诊断指导。
 
 ## 自然回答
