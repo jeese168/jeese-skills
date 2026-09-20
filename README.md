@@ -87,7 +87,7 @@ reference 不是另一个 Skill，而是同一个 Skill 的内部资料。组织
 - `使用 $jeese-explaining-workflow，快速了解这组对象的关系，先讲到定位与作用。`
 - `使用 $jeese-explaining-workflow，只解释这里的加载版本号是什么意思。`
 
-本版不追求覆盖旧讲解的全部用途，后续按真实需要增加路线。阶段约束用于提高遵循稳定性，不是平台强制保证。子 Agent 审查默认关闭；计划由 `jeese-engineers` 新增情况六承接，本版尚未接入，也没有修改其现有五种情况。用户明确要求独立审查时，工作流说明限制并停在最终讲解之前，不把自检冒充独立审查。
+本版不追求覆盖旧讲解的全部用途，后续按真实需要增加路线。阶段约束用于提高遵循稳定性，不是平台强制保证。子 Agent 审查默认关闭；用户明确要求时，在标准第三阶段或快速第二阶段之后调用 `jeese-engineers` 情况六：一个子 Agent 检查中间产物，主 Agent 核实后按采纳／不采纳处理，自行修正并继续最终讲解。不会要求用户搬运审查意见或批准中间修订。必要时最多增加一次聚焦复查；缺少 Skill、情况六或子 Agent 能力时说明限制，不把自检冒充独立审查。
 
 ## 唯一真源与可迁移性
 
@@ -115,9 +115,9 @@ Skill 可以使用 `references/example.md` 这类内部相对路径，因为目�
 - [`jeese-writing`](skills/jeese-writing/)：把材料、对话或已有草稿整理成可以长期保存、维护或发布的中文文章和笔记。
 - [`jeese-explaining`](skills/jeese-explaining/)：在日常对话中讲清概念、机制、区别和有证据权重的现实判断。
 - [`jeese-explaining-workflow`](skills/jeese-explaining-workflow/)：显式调用的分阶段讲解第一版，以标准、快速了解或针对性解答模式帮助理解，具体流程见上文。
-- [`jeese-engineers`](skills/jeese-engineers/)：用户明确调用后，列出增量或全量落盘路径，为当前方案或改动生成完整送审指令，核实返回的意见并分成三类，或按所需深度讲解修改。另有明确触发的低频用途：直接核查指定的已有技术文档或 OpenSpec 文档与相关依据是否一致。双窗口审查方直接执行生成的指令，无需另外加载本 Skill。
+- [`jeese-engineers`](skills/jeese-engineers/)：用户明确调用后，列出增量或全量落盘路径，为当前方案或改动生成完整送审指令，核实返回的意见并分成三类，或按所需深度讲解修改。另有明确触发的低频用途：直接核查指定的已有技术文档或 OpenSpec 文档与相关依据是否一致。情况六接受用户明确要求的 workflow 中间产物独立审查，由主 Agent 调度、核实成两类并修正。审查方按完整指令执行，无需另外加载本 Skill。
 
-讲解产生的定义、因果链、例子和边界可以成为后续写作的原始材料。当前已实现的能力没有跨 Skill 运行依赖，也不要求同时激活；`jeese-engineers` 和 `jeese-explaining-workflow` 只在明确调用时启用。运行所需材料收拢在各自的 Skill 目录内，计划中的可选审查接入另行实施。
+讲解产生的定义、因果链、例子和边界可以成为后续写作的原始材料。各 Skill 的基础能力独立运行，指导材料收拢在各自目录内。用户要求的可选审查是明确的跨 Skill 配合：`jeese-explaining-workflow` 在检查点调用当前环境中的 `jeese-engineers` 情况六；不带独立审查的讲解无需这个依赖。`jeese-engineers` 仍支持用户直接调用，也接受用户已授权的情况六交接。
 
 `jeese-change-review` 已退役，其适用规则已按用途迁入 `jeese-engineers`。原目录保存在 `archive/`，归档原因及功能去向见[归档记录](archive/README.md)。归档只作历史留存，现役 Skill 不依赖它运行。
 

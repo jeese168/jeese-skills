@@ -2,29 +2,34 @@
 name: jeese-engineers
 description: >-
   Support Jeese's engineering handoff when explicitly invoked: list
-  incremental or feature-related full absolute file paths, generate a
+  incremental or feature-related full file paths, generate a
   self-contained review prompt for the current work, independently verify
   returned findings into three dispositions, or explain completed changes
   at the requested depth. Also perform a standalone consistency review of
   specified existing technical or OpenSpec documents when explicitly
-  requested. Use only when the user invokes jeese-engineers. This skill
+  requested. For explicitly requested workflow artifact review, dispatch a
+  subagent, verify its findings into two dispositions, and correct intermediate
+  artifacts. Use only when the user invokes jeese-engineers or an authorized
+  workflow delegates that artifact review. This skill
   adapts handoff and explanation; it does not define an engineering workflow
   or author and advance OpenSpec changes.
 ---
 
 # Jeese Engineers
 
-用户手动调用本 Skill，选择要交付的产物，并自己搬运双窗口之间的材料。常用任务是列路径、生成送审指令、核实返回的意见，以及讲解改动；独立核查已有文档是另一个低频、明确触发的用途。
+用户手动调用本 Skill，选择要交付的产物。情况一至五保留现有交付方式，其中双窗口送审由用户自行搬运材料。情况六用于用户明确要求的 workflow 中间产物审查，由主 Agent 调度子 Agent，核实并修正产物后返回原工作流。
 
-先判断**这一轮要交的产物是哪一种**。五种情况互斥：一次只走一条。用户指定了产物，就按指定走；没指定时，结合当前窗口上下文判断这条消息里贴来的材料。只有点名，或材料仍不足以确定任务时，先询问，等用户确认再进入对应情况。对照少样本：[指定了就按指定、有材料就按材料](references/examples-and-counterexamples.md#指定了就按指定有材料就按材料)、[只有点名时询问或按进度推荐](references/examples-and-counterexamples.md#只有点名时询问或按进度推荐)、[有材料但任务仍不明确时针对歧义询问](references/examples-and-counterexamples.md#有材料但任务仍不明确时针对歧义询问)。
+先判断**这一轮要交的产物是哪一种**。六种情况互斥：一次只走一条。用户指定了产物，就按指定走；没指定时，结合当前窗口上下文判断这条消息里贴来的材料。只有点名，或材料仍不足以确定任务时，先询问，等用户确认再进入对应情况。对照少样本：[指定了就按指定、有材料就按材料](references/examples-and-counterexamples.md#指定了就按指定有材料就按材料)、[只有点名时询问或按进度推荐](references/examples-and-counterexamples.md#只有点名时询问或按进度推荐)、[有材料但任务仍不明确时针对歧义询问](references/examples-and-counterexamples.md#有材料但任务仍不明确时针对歧义询问)。
 
 **用户指定了。** 这句话里已经点明要落盘路径、生成送审指令、独立核查指定文档、核实返回的意见，或讲解改动：按指定进入对应情况。用户只写了 `/jeese-engineers`，但同一条消息里已经带了材料的，结合上下文判断任务。
+
+**用户要求审查 workflow 中间产物。** 用户直接点名情况六，或在 workflow 中明确要求最终生成前用子 Agent 检查中间产物时，进入情况六，不要求再点一次本 Skill。不因出现 `work.md`、Markdown 或“检查一下”就自动派子 Agent；需要明确的中间产物独立审查意图。情况六接收到自己派出的子 Agent 发现时继续情况六，不切到情况四。
 
 **没指定，但材料对得上。** 执行窗口收到按条列出对象、问题、建议的审查发现，当前上下文也表明这是送回来的意见时，直接进入情况四。仅有文件路径、方案文字或问题列表，还不足以证明用户要独立核查文档；情况三需要清楚的文档核查意图。
 
 **双窗口送审的交接。** 情况二生成的指令包含审查任务和回复要求，用户自行拼接对象后交给审查窗口。审查窗口直接执行这份指令，无需再次调用本 Skill。若用户仍在完整指令旁点名本 Skill，按已经明确的指令执行；这不改变情况三的独立文档核查用途。同一审查窗口的后续复查沿用已收到的指令，并以用户的新要求和新材料为准。
 
-**只有点名。** 用户就是发了 `/jeese-engineers` 或同等点名，同一条里没有指定、也没有上面那些材料：停下来问这一轮要交什么。问法跟着当前窗口走，可以给一个推荐，例如刚改完代码、路径还没交，推荐先做情况一；路径已经有了、审查指令还没有，推荐情况二。推荐之后等用户应一声再做。五种产物做成固定选择题、每轮都点一遍，不是这一步要的问法。
+**只有点名。** 用户就是发了 `/jeese-engineers` 或同等点名，同一条里没有指定、也没有上面那些材料：停下来问这一轮要交什么。问法跟着当前窗口走，可以给一个推荐，例如刚改完代码、路径还没交，推荐先做情况一；路径已经有了、审查指令还没有，推荐情况二。推荐之后等用户应一声再做。所有产物做成固定选择题、每轮都点一遍，不是这一步要的问法。
 
 **有材料，但任务仍不明确。** 结合材料和当前上下文仍无法确定要做哪一种时，说明最可能的理解，针对实际歧义问一句，等用户确认。材料足以确定任务时，直接进入对应情况。
 
@@ -89,6 +94,16 @@ description: >-
 - 用户要拿去做笔记、归纳、沉淀，或明确要求把相关改动讲全：按磁盘上的实际改动把该讲的部分讲完整。
 
 读 [references/explain-changes.md](references/explain-changes.md)。
+
+## 情况六：审查并修正 workflow 中间产物
+
+用户明确要求独立审查时，由主 Agent 将本次理解目标、范围、深度、必要背景和中间产物交给一个子 Agent 检查。子 Agent 只返回发现；主 Agent 自己核实，按「采纳／不采纳」处理，并直接修正本次中间产物。
+
+不复用情况二的手动搬运和回合结束，不复用情况四的第三类拍板或只整理不修改。审查与修正仅限本次中间产物及其图文，不修改被解释的代码、项目配置或 Skill 本身。不增加一套增量／全量询问。
+
+产物是经过核实修正的中间材料及简短处置记录。完成后继续调用方原来的工作流，不把审查报告作为最终讲解交给用户。子 Agent 收到完整审查指令后直接执行，不再加载本 Skill 或派出另一层 Agent。
+
+读 [references/workflow-artifact-review.md](references/workflow-artifact-review.md)。
 
 ## 少样本
 

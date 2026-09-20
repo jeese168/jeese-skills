@@ -1,6 +1,6 @@
 interface:
   display_name: "Jeese 工程协作"
-  short_description: "手动调用：交付路径、生成完整送审指令、独立核查文档、核实意见与讲解改动"
+  short_description: "手动调用：交付路径、送审核实、讲解改动及 workflow 中间产物审查"
   default_prompt: "使用 $jeese-engineers，结合我的要求和材料判断本次要交付什么；任务不明确时，先针对缺口询问。"
 policy:
   allow_implicit_invocation: false
