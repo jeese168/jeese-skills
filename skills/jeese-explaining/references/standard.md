@@ -1,12 +1,12 @@
 # 情况一：标准讲解
 
-在选定范围内充分讲清，文字为主、图为辅。读取 [depth.md](depth.md)、[concepts.md](concepts.md) 和 [organization.md](organization.md)，沿用已知用途和深度。它们约束内容与组织，不要求先交出草稿、表格或中间文件。
+在选定范围内充分讲清，文字为主、图为辅。读取 [depth.md](depth.md)、[concepts.md](concepts.md) 和 [organization.md](organization.md)，沿用已知用途和深度。按这些指导直接组织本次讲解。
 
 ## 普通学习
 
-涉及具体项目时读取 [technical-explanations.md](technical-explanations.md)，查清本次依赖的对象、关系、过程和条件。通用概念按问题查证，不为了套模式要求用户提供仓库。
+涉及具体项目时读取 [technical-explanations.md](technical-explanations.md)，查清本次依赖的对象、关系、过程和条件。通用概念使用与问题相关的知识和资料解释。
 
-先回应核心疑问，再按对象的自然结构展开。共同前提在主线前集中说明一次，局部陌生概念在首次使用时解释。复杂过程可以用一次实际相关的输入、状态变化和结果串起来，不把所有问题改成固定的“入口、主链路、总结”。范围充分不等于穷尽整个系统。
+先回应核心疑问，再按对象的自然结构展开。共同前提在主线前集中说明一次，局部陌生概念在首次使用时解释。复杂过程可以用一次实际相关的输入、状态变化和结果串起来，其他内容按其自身关系组织。范围充分不等于穷尽整个系统。
 
 图比文字更易呈现关系、时序或状态时读 [visual-explanations.md](visual-explanations.md)。文字承担连续解释，图辅助理解；不追求图文比例或固定张数。
 
