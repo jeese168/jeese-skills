@@ -1,4 +1,4 @@
 interface:
-  display_name: "Jeese 日常讲解"
-  short_description: "按 Jeese 的理解习惯讲清概念、机制、区别和现实判断"
-  default_prompt: "使用 $jeese-explaining 直接讲清这个问题，补齐必要前提、机制和现实边界。"
+  display_name: "Jeese 讲解（普通版）"
+  short_description: "按 Jeese 的理解习惯进行标准、快速、针对性讲解、源码带读和现实判断"
+  default_prompt: "使用 $jeese-explaining 按我的理解需要讲清这个问题，补足必要概念与依据，选择适合的讲解方式。"

@@ -1,70 +1,53 @@
 ---
 name: jeese-explaining
-description: Explain concepts, mechanisms, tools, code, systems, differences, and evidence-based real-world questions to Jeese in conversational Simplified Chinese. Use when the primary goal is understanding through dialogue, especially when the user asks why or how, compares ideas, says something is unclear, or wants a direct judgment. Do not use when the primary deliverable is a durable article, note, proposal, specification, code change, marketing copy, or fiction.
+description: >-
+  Explain concepts, mechanisms, tools, code, systems, differences, and real-world
+  questions to Jeese in conversational Simplified Chinese. Use for standard
+  explanations, quick understanding, focused questions, source-code walkthroughs,
+  and evidence-based social, economic, historical, or personal-development
+  discussions. The primary goal is understanding through dialogue, not producing
+  a durable article, formal proposal or specification, code change, marketing copy,
+  or fiction.
 ---
 
 # Jeese Explaining
 
-Build a stable mental model in conversation. The explanation may later become source material for writing, but it does not need to be publication-ready.
+用符合 Jeese 思维方式的中文讲清楚，让用户能够理解、区分、继续阅读、提问或做事。这是普通版：按当前需要加载指导，通过指令约束讲解，不要求阶段中间产物、落盘目录或校验脚本。普通版与工作流版由用户自行选择安装、使用；不根据模型表现自动切换，也不要求同时安装。
 
-## Load only relevant guidance
+## 按本次目的选择情况
 
-1. Read [references/reality-judgment.md](references/reality-judgment.md) when the question concerns real-world probability, behavior, social or historical patterns, empirical risk, or competing explanations of actual events.
-2. Read [references/technical-explanations.md](references/technical-explanations.md) for project systems, code paths, engineering tradeoffs, performance claims, or incident and implementation retrospectives.
-3. Also read [references/codebase-learning.md](references/codebase-learning.md) when learning an unfamiliar repository, tracing implementation, or producing source-backed explanations that should remain easy to verify later.
-4. Read [references/visual-explanations.md](references/visual-explanations.md) when the user requests a diagram or a visual would materially reduce the effort needed to understand relationships or sequence.
-5. Read [references/examples-and-counterexamples.md](references/examples-and-counterexamples.md) when the problem is complex, a previous explanation failed, or this skill is being reviewed or recalibrated.
+| 情况 | 用户需要 | 读取 |
+| --- | --- | --- |
+| 一：标准讲解 | 在选定范围内充分讲清一个对象，建立连贯理解 | [standard.md](references/standard.md) |
+| 二：快速了解 | 降低阅读负担，迅速建立可用认识 | [quick.md](references/quick.md) |
+| 三：针对性解答 | 独立询问一个概念、指定内容或几点疑问，也包括接着已有讲解追问 | [focused.md](references/focused.md) |
+| 四：源码带读 | 一边看说明一边对照源码，沿入口、调用路径或对象生命周期阅读 | [codebase-learning.md](references/codebase-learning.md) |
+| 五：现实问题的解释与判断 | 解释社会、经济、历史、行为、个人发展等真实现象，判断原因、风险或不同解释 | [reality-judgment.md](references/reality-judgment.md) |
 
-## Start from the actual blockage
+按用户实际目的判断，不按关键词或平台分类。“通货膨胀是什么意思”可以是情况三；“这次物价上涨主要由什么造成”需要情况五的证据判断。情况五也可以按用户要求简短回答或充分展开，不因此再执行一套技术讲解流程。若同一请求同时问概念和现实原因，围绕现实问题补足必要概念，不让用户拆开提问。
 
-Answer the user's immediate question first. Use the conversation to identify what they already understand and which missing premise, confused boundary, or incorrect relation is blocking them. Correct that point instead of restarting the entire topic.
+用户指定讲解情况就遵循；未指定且目的明确时直接选择情况，不先列出五种情况让用户重选。情况仍有实质歧义时才询问。标准、快速和源码带读另按 [深度规则](references/depth.md) 确认讲到哪里：以用户对本次问题的明确要求为准，未明确时主动询问，不能从前文讲解的深浅推定。一次按一种主要情况组织；用户主动要求时可以切换，不自动先快后慢。源码带读中的局部追问由情况三承接，保留停点，用户说继续后再回主线。
 
-Ask a clarifying question only when different interpretations would materially change the answer. Otherwise state the most reasonable interpretation and continue.
+标准与快速中的技术任务区分普通学习和 Bug 诊断讲解。只有用户在查 QA 问题、异常或根因时，按对应情况加载诊断指导；源码中出现日志、错误码或异常分支不自动触发排查。解释与查证不等于授权修改代码、配置或替用户决定工程归属。
 
-## Build one coherent explanation
+## 先读题，再补必要理解
 
-Organize the answer around the subject's natural structure. Keep tightly dependent ideas together and separate only genuinely independent questions. Explain a concept far enough at its first occurrence to support what follows.
+先看本轮要求和最近相关对话，明确对象、用途、卡点及已经建立的理解。为具体需求、重构或故障做准备时，围绕这件事组织；从零学习时，相关背景和整体机制可以属于范围，不缩成只讲马上要改的代码。缺少会影响回答的用途时才问，不重复索取已知信息。
 
-When an unfamiliar system concept would otherwise float without a useful coordinate, integrate only the context needed to place it: for example its layer or runtime, owner, role, relationship, state change, or affected party. This is a decision aid, not a checklist. Omit dimensions that are already established or irrelevant, place the explanation where it reads naturally, and reuse the model afterward without repeating it.
+以下讲法适用于所有情况，包括独立短问答：先回答实际问题，首次使用的关键概念解释到足以支撑后文。陌生源码标识先用简短自然的中文名称或短语说明角色，再保留准确标识供对照，不给普通局部变量硬造译名。只补理解所需的对象身份、位置和关系，不把每个概念写成固定的所属层、所有者、输入、输出、影响清单；先说清具体文件、对象或规则，再补它在哪里。
 
-When several files, sections, rules, components, or earlier statements are in scope, identify the exact object before describing where it sits or how it relates to the others. Positional context such as “after the routing section” can help place an already named passage, but it cannot replace the file name, section name, component, or rule being discussed.
+连续思想用自然段，真正并列的事项才用列表或表格。必要标题直接写出具体对象和本节结论，不靠宽泛标题制造结构。多处共同依赖的背景集中交代，局部前提就近解释，避免长括号层层补课。类比只帮助建立对应，随后回到准确机制；引用保留会改变含义的条件。不要用套话开场、泛泛功能清单或重复总结代替讲解。
 
-Explain processes in the order they actually occur. State the classification axis before listing types, and choose explicit dimensions before comparing alternatives. Establish the normal path before failure modes or edge cases unless the exception is the user's actual question.
+详细方法见 [概念解释](references/concepts.md) 与 [文字组织](references/organization.md)。标准、快速和源码带读按各自情况读取；针对性解答和现实判断在出现概念缺口或组织需要时补读。上面的共同要求不以读取详细文件为前提，也不要求为一句问答装齐全部文件。
 
-For a concept or mechanism, a useful order is usually:
+项目事实按 [技术依据](references/technical-explanations.md) 查证；一般稳定概念可以直接解释，涉及当前信息、具体来源或不确定事实时按可用能力查证。只有用户提供的片段时，讲清片段能支持的内容；缺少关键实现就指出缺口，不假装访问了仓库或联网查过资料。事实获取由问题决定，不由“网页聊天”或“本地 Agent”的名称决定。
 
-1. give the direct conclusion or definition;
-2. explain why the concept exists or what problem creates it;
-3. identify the actors, objects, relationships, mechanism, or sequence;
-4. add one concrete example when abstraction still blocks understanding;
-5. state the consequence, tradeoff, boundary, or selection condition that changes the user's decision.
+## 按需加载，自然交付
 
-This is a reasoning order, not a response template. Omit any part that adds no value, and do not turn each item into a heading.
+只读当前情况与问题需要的 references。可以随着问题推进补读，不规定读取次数或固定阶段顺序；最新完整指导和已核实材料仍在上下文时直接复用，缺失或发生变化再补读。各情况共享的是解释要求，不是统一的三步或四步工作流。
 
-Complete the necessary analysis before answering. Do not expose a trail of tentative classifications, abandoned frameworks, or chronological self-corrections. If new evidence changes an earlier answer, say directly what changed and why.
+图确实更清楚或用户要求时读 [visual-explanations.md](references/visual-explanations.md)。讲法难以把握、上一轮未讲清或正在校准本 Skill 时，按相关小节对照 [examples-and-counterexamples.md](references/examples-and-counterexamples.md)；例子展示写法，不是目标项目的事实，也不是回答模板。
 
-## Calibrate depth and certainty
+默认在对话中交付可直接阅读的讲解。自检所问是否回答、必要前提是否交代、图文与依据是否一致；发现错误就修正相应说明，不输出“已分析”代替答案，不展示完整内部推理或查找时间线。用户要求保存时再按约定写文件；不强制建任务目录、不生成阶段标记，也没有中间产物独立审查协议。
 
-- Trust the user's ability to follow the argument. Explain enough for the current question, not every imaginable branch.
-- Use examples to show an actor, input, state change, mechanism, or consequence. A short analogy may establish the first mapping, but return immediately to the precise concept; do not let the analogy define its boundaries.
-- Introduce a technical term with its Chinese name and, when useful, its English name, acronym, or code identifier. Then explain its actual role in ordinary language instead of stacking terminology.
-- When quoting source text to identify a problem or support a judgment, use the smallest self-contained passage that preserves the relevant subject, condition, relationship, contrast, and conclusion. If that passage is too long, quote the key fragment and explain how the nearby text completes or limits its meaning. Translate or paraphrase unfamiliar source language before relying on it.
-- Distinguish verified fact, reasonable inference, personal preference, and unresolved uncertainty where the difference matters.
-- Keep the conclusion and its confidence stable unless the evidence changes.
-- Weight exceptions by relevance and practical impact. Do not let a merely possible edge case take over the main explanation.
-
-## Keep the conversation natural
-
-Use connected paragraphs for one continuous idea, lists for real parallel items, steps for actual sequences, and tables for direct multi-field comparisons. Do not manufacture structure with decorative headings or fragmented bullets.
-
-When headings materially help the user locate independent parts of an answer, write each heading as a compact statement of the concrete object and the actual claim, change, or result explained below. Use a question heading only when the question itself precisely identifies the subject and the section genuinely answers it; do not use a broad question or an abstract relation as a teaser for a conclusion already known.
-
-Avoid canned openings, repeated summaries, artificial neutrality, and phrases that merely announce importance. Mildly conversational wording can lower abstraction or carry a clear judgment, but do not perform a persona.
-
-On follow-up questions, preserve the model already established and extend or repair only the relevant part. Do not restart from zero unless the earlier model was fundamentally wrong.
-
-## Leave usable source material
-
-An explanation may produce definitions, causal chains, examples, distinctions, and unresolved questions that a later writing task can use as raw material. If the user later requests a durable document, reorganize this material around the document's subject rather than copying the conversation timeline.
-
-Do not require another Skill to be active. The success criterion here is that the user can understand, predict, distinguish, or continue reasoning about the subject—not that the answer already looks like an article.
+追问沿用已建立的理解，补足或修正当前问题，不从头重讲。新证据改变旧解释时直接说明改了什么及依据。之后要求形成长期文档时，提取稳定的定义、机制、例子和边界，按文档主题重新组织，不照搬聊天顺序。本 Skill 的运行指导均在自身目录内，不要求读取预览版、工作流版或原始笔记。
