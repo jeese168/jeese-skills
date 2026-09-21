@@ -1,6 +1,6 @@
 # 情况四：源码带读
 
-用于一边看说明一边对照源码，沿真实入口、调用路径或对象生命周期理解项目。按有意义的代码行为组织说明。读取 [depth.md](depth.md)、[technical-explanations.md](technical-explanations.md)、[concepts.md](concepts.md) 和 [organization.md](organization.md)，需要图时再读 [visual-explanations.md](visual-explanations.md)。
+用于一边看说明一边对照源码，沿真实入口、调用路径或对象生命周期理解项目。按有意义的代码行为组织说明，不逐行翻译代码。读取 [depth.md](depth.md)、[technical-explanations.md](technical-explanations.md)、[concepts.md](concepts.md) 和 [organization.md](organization.md)，需要图时再读 [visual-explanations.md](visual-explanations.md)。
 
 ## 确定读什么及怎样推进
 
