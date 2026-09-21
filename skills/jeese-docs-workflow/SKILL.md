@@ -6,8 +6,8 @@ description: >-
   Use a staged file-based workflow with reusable content, explicit completion
   conditions, and executed artifact checks to produce durable documents.
   New learning documents and engineering proposals have separate four-stage
-  paths; maintenance and merging have three stages each. Use for document work,
-  not conversational explanations, code implementation, or social commentary and essays.
+  paths; maintenance and merging have three stages each. Use when the requested
+  deliverable is a durable learning, project, or engineering document.
 ---
 
 # Jeese Docs Workflow
@@ -38,7 +38,7 @@ description: >-
 
 各阶段文件给出本阶段要读的指导、实际产物、完成条件和下一文件。达到完成条件并通过落盘检查后才读下一阶段指导。事实材料按当前查证需要读取。
 
-学习和技术方案各有独立的四份阶段指导；共同风格与方法由内部 references 提供。全部运行材料位于本 Skill 内，不要求安装或先执行其他 Skill。
+学习和技术方案各有独立的四份阶段指导；共同风格与方法由内部 references 提供。
 
 ## 阶段执行与修正
 
