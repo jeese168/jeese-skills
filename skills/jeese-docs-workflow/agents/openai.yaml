@@ -1,0 +1,4 @@
+interface:
+  display_name: "Jeese 文档工作流"
+  short_description: "按阶段整理、解释和组织内容，撰写学习与技术文档，维护或合并已有文档"
+  default_prompt: "使用 $jeese-docs-workflow，结合本次要求和相关上下文选择路线，按阶段形成并核对文档。"
