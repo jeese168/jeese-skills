@@ -3,9 +3,9 @@ name: jeese-essays-workflow
 description: >-
   Turn existing discussions, chat transcripts, AI summaries, or rough drafts into
   Simplified Chinese social commentary, relationship essays, and personal reflections
-  in Jeese's voice. Use a three-stage writing workflow to create, revise, or merge
-  essays while preserving the author's stance and expression. Deliver illustration
-  prompts and FIG captions, and optionally format approved Markdown as print HTML
+  in Jeese's voice. Choose a dedicated three-stage route for new essays, revisions
+  and additions, or multi-essay merging while preserving the author's stance.
+  Deliver illustration prompts and FIG captions, and optionally format approved Markdown as print HTML
   or PDF using the bundled template. Use for writing from existing ideas, not
   open-ended discussion, technical plans, or instructional project documentation.
 ---
@@ -18,13 +18,19 @@ description: >-
 
 | 本次工作 | 读取与执行方式 |
 | --- | --- |
-| 新写、修改、追加或合并文章 | 完成下方准备，完整读取 [核心风格](references/core-style.md) 与 [写作流程](references/workflow.md)，按三个阶段依次执行 |
+| 从讨论、复述或资料形成新文章 | [新写文章](references/new-article.md)：整理原意与主线 → 写清关键论述 → 形成全文并核对 |
+| 修改、追加、删改或重组指定的已有文章 | [修改与追加](references/revision.md)：确定改意与影响 → 写出修订部分及接续 → 写回并核对 |
+| 明确把多篇文章或选定章节合成一篇 | [多篇合并](references/merge.md)：处理来源与合并主线 → 融合论述与衔接 → 成文并对照来源核对 |
 | 准备配图或接入已有图片 | 在处理图位前读取 [配图与 FIG](references/illustrations.md)，交付位置、完整生图提示词与图注；本 Skill 不执行生图 |
 | 仅将已有成稿排成 HTML／PDF，或调整打印版面 | 确定下方路径后直接读取 [打印与导出](references/print-export.md)；正文需要改写时先完成对应写作工作 |
 
-写作流程集中为三个阶段：整理原意与主线 → 写清关键论述 → 形成全文并立即核对修订。每阶段消费有效的前阶段产物，实际加工内容、落盘，满足内容完成条件并运行结构检查后，才进入下一阶段。具体产物、命令和修正方式在流程文件中。
+参考多份资料写文章属于新写；明确把多篇独立文章合成一篇才选择合并。给已有文章补充想法、例子或文末补记属于修改与追加；即使参考了其他文章，也按修改目标判断。整体重组指定文章同样进入修改路线。意图已有依据时直接选择，会改变保留范围或交付形式的歧义才问。
 
-核心风格从第一阶段就应用于实际内容，后续继续使用。所需指导和产物完整、有效且已在上下文时复用；缺失、截断、压缩后只剩摘要或磁盘修订时，按流程目录补读相应完整章节与产物。每阶段落盘后的实际检查仍须执行。阶段产物与脚本提高执行稳定性，不构成平台强制保证。
+完成下方准备后，写作时读取 [核心风格](references/core-style.md)、[产物与检查](references/artifacts.md)，以及选定的一份路线文件。每条路线的三个阶段集中在该文件内，首次完整了解，再依次执行。每阶段消费有效产物，完成实际加工、落盘，满足内容条件并运行结构检查后进入下一阶段。
+
+配图是当前文章的辅助工作，处理图位时按需读取。打印与导出既可单独进入，也可在文章写作完成后衔接；用户只要求导出成稿时，完成路径准备后直接进入导出。
+
+核心风格从第一阶段就应用于实际内容，后续继续使用。所需指导和产物完整、有效且已在上下文时复用；缺失、截断、压缩后只剩摘要或磁盘修订时，按已选路线补读相应完整章节与产物。每阶段落盘后的实际检查仍须执行。阶段产物与脚本提高执行稳定性，不构成平台强制保证。
 
 ## 准备与路径
 
@@ -40,9 +46,9 @@ description: >-
 
 ## 任务记录与交付
 
-按文章建立不冲突的任务子目录，默认使用 `work.md` 保存任务说明与阶段产物。同一文章的修订复用目录；确实换文章时分开记录，目录选择不清楚才询问。
+按文章建立不冲突的任务子目录，默认使用 `work.md` 保存任务说明与阶段产物。同一文章的修订复用目录，每轮与路线按产物约定记录；确实换文章时分开记录，目录选择不清楚才询问。
 
-记录影响后续工作的实际信息：本次要求、输入来源、写作操作、作者已明确的态度及表达偏好、输出位置、是否需要导出、已有图片与待交付提示词。若用户指定先看某个中间结果，就在那个位置等待；其他情况按完成条件连续推进。
+记录影响后续工作的实际信息：本次要求、输入来源、选定路线、作者已明确的态度及表达偏好、输出位置、是否需要导出、已有图片与待交付提示词。若用户指定先看某个中间结果，就在那个位置等待；其他情况按完成条件连续推进。
 
 本次用途、有效来源和必要路径明确后进入相应工作。Markdown 是正文源；工作记录、生图指令和正式正文分别存放。HTML／PDF 在用户要求时生成。最终交付可打开的正文与提示词链接，并如实说明配图、导出及检查状态。
 

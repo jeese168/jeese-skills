@@ -2,7 +2,7 @@
 """Read-only structural checks and scoped reads of Markdown stage artifacts.
 
 No semantic scoring, Markdown rendering, network access, or file writes.
-See references/workflow.md for the marker contract.
+See references/artifacts.md for the marker contract.
 """
 
 import argparse
