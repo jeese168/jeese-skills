@@ -1,0 +1,185 @@
+@page {
+  size: A4;
+  margin-top: 9mm;
+  margin-right: 20mm;
+  margin-bottom: 16mm;
+  margin-left: 20mm;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #ffffff; }
+body {
+  color: #2c2925;
+  font-family: "Noto Serif CJK SC", "Source Han Serif SC", serif;
+  font-size: 11.15pt;
+  line-height: 1.80;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
+}
+main { width: 100%; }
+.print-shell {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.print-shell > thead > tr > th,
+.print-shell > tbody > tr > td {
+  border: 0;
+  padding: 0;
+  font-weight: inherit;
+  text-align: left;
+  vertical-align: top;
+}
+.print-shell > thead > tr > th {
+  padding-bottom: 8mm;
+}
+.running-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: "Noto Sans CJK SC", "Source Han Sans SC", sans-serif;
+  font-size: 9.2pt;
+  line-height: 1.4;
+  letter-spacing: .12em;
+  font-weight: 400;
+  color: #836b55;
+  padding: 0;
+}
+.article-head {
+  padding-top: 6mm;
+  margin-bottom: 25pt;
+}
+.overline {
+  margin: 0 0 8pt 0;
+  font-family: "Noto Sans CJK SC", "Source Han Sans SC", sans-serif;
+  font-size: 9.2pt;
+  line-height: 1.4;
+  letter-spacing: .12em;
+  font-weight: 400;
+  color: #836b55;
+}
+h1 {
+  margin: 0;
+  color: #27231f;
+  font-family: "Noto Serif CJK SC", "Source Han Serif SC", serif;
+  font-weight: 700;
+  font-size: 28pt;
+  line-height: 1.22;
+  letter-spacing: -0.025em;
+}
+.dek {
+  width: 82%;
+  margin-top: 15pt;
+  color: #857c73;
+  font-family: "Noto Serif CJK SC", "Source Han Serif SC", serif;
+  font-size: 10.45pt;
+  line-height: 1.48;
+  font-weight: 400;
+}
+.title-rule {
+  position: relative;
+  height: .75pt;
+  background: #d5cdc3;
+  margin-top: 27pt;
+}
+.title-rule::before {
+  content: "";
+  position: absolute;
+  left: 0; top: -0.15pt;
+  width: 14%; height: 1.35pt;
+  background: #755f49;
+}
+/* The later major section is visibly a taxonomy level, not just another subheading. */
+h2 {
+  margin: 38pt 0 18pt 0;
+  padding-top: 14pt;
+  border-top: .65pt solid #d8d1c8;
+  font-family: "Noto Serif CJK SC", "Source Han Serif SC", serif;
+  font-size: 17pt;
+  line-height: 1.42;
+  letter-spacing: .02em;
+  font-weight: 700;
+  color: #302b26;
+  break-after: avoid;
+}
+.article-head + h2 {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+h3 {
+  margin: 27pt 0 12pt 0;
+  font-family: "Noto Serif CJK SC", "Source Han Serif SC", serif;
+  color: #37312c;
+  font-size: 14.7pt;
+  line-height: 1.45;
+  font-weight: 700;
+  break-after: avoid;
+}
+.article-head + h3 { margin-top: 0; }
+p {
+  margin: 0 0 11.5pt 0;
+  text-align: justify;
+  text-justify: inter-ideograph;
+  orphans: 3;
+  widows: 3;
+}
+p.lead::first-letter {
+  float: left;
+  font-size: 20pt;
+  line-height: .88;
+  color: #765f48;
+  font-weight: 700;
+  margin: .18em .15em 0 0;
+}
+strong {
+  font-weight: 700;
+  color: #28231f;
+}
+p.pull {
+  width: 82%;
+  margin: 20pt auto 22pt auto;
+  padding: 1.5pt 0 1.5pt 17pt;
+  border-left: 1.45pt solid #b79f88;
+  color: #51483f;
+  font-size: 12.6pt;
+  line-height: 1.58;
+  text-align: left;
+  break-inside: avoid;
+}
+.figure {
+  width: 82%;
+  margin: 21pt auto 25pt auto;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.figure-wide { width: 87%; }
+.figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 0;
+  box-shadow: none !important;
+  filter: none !important;
+}
+.figure figcaption {
+  margin: 7.5pt 0 0 0;
+  color: #857c73;
+  font-family: "Noto Serif CJK SC", "Source Han Serif SC", serif;
+  font-size: 8.55pt;
+  line-height: 1.48;
+  font-weight: 400;
+  text-align: left;
+}
+.figure figcaption .fig-label {
+  font-family: "Noto Sans CJK SC", "Source Han Sans SC", sans-serif;
+  font-size: 7.2pt;
+  letter-spacing: .16em;
+  font-weight: 400;
+  color: #857c73;
+  margin-right: .55em;
+}
+@media print {
+  html, body { background: #ffffff !important; }
+  .figure, h2, h3, p.pull { break-inside: avoid; page-break-inside: avoid; }
+}

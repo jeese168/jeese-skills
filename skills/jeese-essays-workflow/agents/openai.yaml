@@ -1,0 +1,4 @@
+interface:
+  display_name: "Jeese 随笔工作流"
+  short_description: "把已有讨论整理成保留作者立场的自然文章，交付配图提示词并按需排版导出"
+  default_prompt: "使用 $jeese-essays-workflow，把这些材料整理成保留我的原意、力度和表达习惯的文章。"
