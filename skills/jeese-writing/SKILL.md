@@ -71,6 +71,7 @@ Before finishing, verify that the article:
 
 - has one stable organizing logic rather than the chronology of the conversation that produced it;
 - makes actors and causal relationships explicit;
+- keeps referents locally identifiable when actors change or earlier content is resumed, and carries forward the conditions needed to understand a reference; after revision or merging, checks this against the resulting context;
 - uses conversational phrasing deliberately rather than performing a persona;
 - contains no repeated summary disguised as a new angle;
 - uses Markdown because it improves comprehension, not because a template demands it;
