@@ -2,17 +2,20 @@
 name: jeese-docs-workflow
 description: >-
   Create, revise, or merge Simplified Chinese learning notes, project explanations,
-  technical retrospectives, and engineering proposals in Jeese's writing style.
+  technical retrospectives, and engineering proposals in Jeese's writing style
+  when explicitly invoked.
   Use a staged file-based workflow with reusable content, explicit completion
   conditions, and executed artifact checks to produce durable documents.
   New learning documents and engineering proposals have separate four-stage
-  paths; maintenance and merging have three stages each. Use when the requested
-  deliverable is a durable learning, project, or engineering document.
+  paths; maintenance and merging have three stages each. Use for durable learning,
+  project, or engineering documents.
 ---
 
 # Jeese Docs Workflow
 
 把学习、项目探索和需求讨论形成的材料，写成可独立阅读、维护或用于工程协作的中文文档。核心风格以本 Skill 内的指导为准；阶段产物逐步完成内容整理、解释、设计和组织，供后续实际使用。
+
+用户显式调用本 Skill 后使用。
 
 ## 根据本次交付选择路线
 

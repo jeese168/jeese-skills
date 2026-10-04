@@ -3,8 +3,9 @@ name: jeese-essays-workflow
 description: >-
   Turn existing discussions, chat transcripts, AI summaries, or rough drafts into
   Simplified Chinese social commentary, relationship essays, and personal reflections
-  in Jeese's voice. Choose a dedicated three-stage route for new essays, revisions
-  and additions, or multi-essay merging while preserving the author's stance.
+  in Jeese's voice when explicitly invoked. Choose a dedicated three-stage route
+  for new essays, revisions and additions, or multi-essay merging while preserving
+  the author's stance.
   Deliver illustration prompts and FIG captions, and optionally format approved Markdown as print HTML
   or PDF using the bundled template. Use for writing from existing ideas, not
   open-ended discussion, technical plans, or instructional project documentation.
@@ -13,6 +14,8 @@ description: >-
 # Jeese Essays Workflow
 
 把用户已经表达的意思写成自然、连贯、有作者立场的文章。输入可以是原始聊天、其他 AI 的复述、条目化草稿或已有文章。本次要求决定目标，上下文帮助理解；用途和表达倾向已经明确时直接采用，只有影响主张、来源取舍或修改范围的实质歧义才具体询问。
+
+用户显式调用本 Skill 后使用。
 
 ## 读取与执行
 
